@@ -1,97 +1,171 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* ============================================
+   CalAI Desktop Dashboard Design System
+   Professional calendar application with modern aesthetics
+   ============================================ */
 
 :root {
-  /* Pure white background with crisp black text */
-  --background: 0 0% 100%;
-  --foreground: 0 0% 0%;
+  /* Font System - Professional Sans-Serif */
+  --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  --font-heading: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', Consolas, monospace;
 
-  /* Clean white cards with black text */
-  --card: 0 0% 100%;
-  --card-foreground: 0 0% 0%;
+  /* Color System - Professional Blue & Gray Palette */
+  /* Background and Surface Colors */
+  --background: 0 0% 98%;              /* Light gray background for reduced eye strain */
+  --foreground: 215 25% 15%;           /* Dark blue-gray text for professionalism */
 
-  /* Popovers with white background */
+  /* Card System */
+  --card: 0 0% 100%;                   /* Pure white cards for content separation */
+  --card-foreground: 215 25% 15%;
+
+  /* Popover System */
   --popover: 0 0% 100%;
-  --popover-foreground: 0 0% 0%;
+  --popover-foreground: 215 25% 15%;
 
-  /* Primary: Black with white text */
-  --primary: 0 0% 0%;
+  /* Primary Brand - Professional Blue */
+  --primary: 217 91% 60%;              /* Vibrant blue for primary actions */
   --primary-foreground: 0 0% 100%;
 
-  /* Secondary: Light gray background with black text */
-  --secondary: 0 0% 97%;
-  --secondary-foreground: 0 0% 0%;
+  /* Secondary System - Neutral Gray */
+  --secondary: 215 15% 92%;
+  --secondary-foreground: 215 25% 15%;
 
-  /* Muted: Subtle gray with darker text */
-  --muted: 0 0% 96%;
-  --muted-foreground: 0 0% 40%;
+  /* Muted System - Subtle Backgrounds */
+  --muted: 215 15% 95%;
+  --muted-foreground: 215 12% 45%;
 
-  /* Accent: Light gray */
-  --accent: 0 0% 96%;
-  --accent-foreground: 0 0% 0%;
+  /* Accent System - Lighter Blue */
+  --accent: 217 80% 95%;
+  --accent-foreground: 217 91% 60%;
 
-  /* Destructive: Clean red */
-  --destructive: 0 70% 50%;
+  /* Destructive - Professional Red */
+  --destructive: 0 72% 51%;
   --destructive-foreground: 0 0% 100%;
 
-  /* Borders: Subtle gray */
-  --border: 0 0% 90%;
-  --input: 0 0% 90%;
-  --ring: 0 0% 0%;
+  /* Success - Professional Green */
+  --success: 142 71% 45%;
+  --success-foreground: 0 0% 100%;
 
-  /* Minimal rounded corners */
-  --radius: 0.375rem;
+  /* Warning - Professional Amber */
+  --warning: 38 92% 50%;
+  --warning-foreground: 0 0% 100%;
 
-  /* Sidebar: Clean white with black text */
+  /* Info - Professional Cyan */
+  --info: 199 89% 48%;
+  --info-foreground: 0 0% 100%;
+
+  /* Calendar Event Colors */
+  --event-blue: 217 91% 60%;
+  --event-green: 142 71% 45%;
+  --event-purple: 262 83% 58%;
+  --event-orange: 25 95% 53%;
+  --event-red: 0 72% 51%;
+  --event-cyan: 199 89% 48%;
+
+  /* Borders and Inputs */
+  --border: 215 15% 88%;
+  --input: 215 15% 88%;
+  --ring: 217 91% 60%;
+
+  /* Border Radius - Modern Rounded */
+  --radius: 0.5rem;
+
+  /* Sidebar System - Light with Subtle Background */
   --sidebar-background: 0 0% 100%;
-  --sidebar-foreground: 0 0% 0%;
-  --sidebar-primary: 0 0% 0%;
+  --sidebar-foreground: 215 25% 15%;
+  --sidebar-primary: 217 91% 60%;
   --sidebar-primary-foreground: 0 0% 100%;
-  --sidebar-accent: 0 0% 96%;
-  --sidebar-accent-foreground: 0 0% 0%;
-  --sidebar-border: 0 0% 90%;
-  --sidebar-ring: 0 0% 0%;
+  --sidebar-accent: 215 15% 95%;
+  --sidebar-accent-foreground: 215 25% 15%;
+  --sidebar-border: 215 15% 88%;
+  --sidebar-ring: 217 91% 60%;
+
+  /* Shadows - Professional Depth */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.08), 0 2px 4px -2px rgb(0 0 0 / 0.05);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.08), 0 4px 6px -4px rgb(0 0 0 / 0.05);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.08), 0 8px 10px -6px rgb(0 0 0 / 0.05);
+
+  /* Spacing System - 8px Grid */
+  --space-1: 0.5rem;   /* 8px */
+  --space-2: 1rem;     /* 16px */
+  --space-3: 1.5rem;   /* 24px */
+  --space-4: 2rem;     /* 32px */
+  --space-6: 3rem;     /* 48px */
+  --space-8: 4rem;     /* 64px */
+
+  /* Typography Scale */
+  --text-xs: 0.75rem;      /* 12px */
+  --text-sm: 0.875rem;     /* 14px */
+  --text-base: 1rem;       /* 16px */
+  --text-lg: 1.125rem;     /* 18px */
+  --text-xl: 1.25rem;      /* 20px */
+  --text-2xl: 1.5rem;      /* 24px */
+  --text-3xl: 1.875rem;    /* 30px */
+  --text-4xl: 2.25rem;     /* 36px */
+
+  /* Transitions */
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-base: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 300ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .dark {
-  --background: 222.2 84% 4.9%;
+  /* Dark Mode - Professional Dark Theme */
+  --background: 222 47% 11%;
   --foreground: 210 40% 98%;
 
-  --card: 222.2 84% 4.9%;
+  --card: 222 47% 14%;
   --card-foreground: 210 40% 98%;
 
-  --popover: 222.2 84% 4.9%;
+  --popover: 222 47% 14%;
   --popover-foreground: 210 40% 98%;
 
-  --primary: 210 40% 98%;
-  --primary-foreground: 222.2 47.4% 11.2%;
+  --primary: 217 91% 60%;
+  --primary-foreground: 0 0% 100%;
 
-  --secondary: 217.2 32.6% 17.5%;
+  --secondary: 217 32% 18%;
   --secondary-foreground: 210 40% 98%;
 
-  --muted: 217.2 32.6% 17.5%;
-  --muted-foreground: 215 20.2% 65.1%;
+  --muted: 217 32% 18%;
+  --muted-foreground: 215 20% 65%;
 
-  --accent: 217.2 32.6% 17.5%;
-  --accent-foreground: 210 40% 98%;
+  --accent: 217 32% 22%;
+  --accent-foreground: 217 91% 60%;
 
-  --destructive: 0 62.8% 30.6%;
-  --destructive-foreground: 210 40% 98%;
+  --destructive: 0 72% 51%;
+  --destructive-foreground: 0 0% 100%;
 
-  --border: 217.2 32.6% 17.5%;
-  --input: 217.2 32.6% 17.5%;
-  --ring: 212.7 26.8% 83.9%;
-  --sidebar-background: 240 5.9% 10%;
-  --sidebar-foreground: 240 4.8% 95.9%;
-  --sidebar-primary: 224.3 76.3% 48%;
+  --success: 142 71% 45%;
+  --success-foreground: 0 0% 100%;
+
+  --warning: 38 92% 50%;
+  --warning-foreground: 0 0% 100%;
+
+  --info: 199 89% 48%;
+  --info-foreground: 0 0% 100%;
+
+  --border: 217 32% 22%;
+  --input: 217 32% 22%;
+  --ring: 217 91% 60%;
+
+  --sidebar-background: 222 47% 11%;
+  --sidebar-foreground: 210 40% 98%;
+  --sidebar-primary: 217 91% 60%;
   --sidebar-primary-foreground: 0 0% 100%;
-  --sidebar-accent: 240 3.7% 15.9%;
-  --sidebar-accent-foreground: 240 4.8% 95.9%;
-  --sidebar-border: 240 3.7% 15.9%;
-  --sidebar-ring: 217.2 91.2% 59.8%;
+  --sidebar-accent: 217 32% 18%;
+  --sidebar-accent-foreground: 210 40% 98%;
+  --sidebar-border: 217 32% 22%;
+  --sidebar-ring: 217 91% 60%;
+
+  /* Dark mode shadows */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.3);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.4), 0 2px 4px -2px rgb(0 0 0 / 0.3);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.4), 0 4px 6px -4px rgb(0 0 0 / 0.3);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.4), 0 8px 10px -6px rgb(0 0 0 / 0.3);
 }
 
 @theme {
@@ -164,11 +238,26 @@ All colors MUST be HSL.
   }
 }
 
+/* ============================================
+   Global Base Styles
+   ============================================ */
+
 * {
   border-color: hsl(var(--border));
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
 }
 
 body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  line-height: 1.6;
   background-color: hsl(var(--background));
   color: hsl(var(--foreground));
   font-feature-settings: "rlig" 1, "calt" 1;
@@ -177,27 +266,169 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-/* Minimal, clean typography */
+/* ============================================
+   Typography System
+   ============================================ */
+
 h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  font-family: var(--font-heading);
   font-weight: 600;
   letter-spacing: -0.025em;
   color: hsl(var(--foreground));
+  line-height: 1.2;
 }
 
-/* Clean button styles */
+h1 {
+  font-size: var(--text-4xl);
+  margin-bottom: var(--space-3);
+}
+
+h2 {
+  font-size: var(--text-3xl);
+  margin-bottom: var(--space-3);
+}
+
+h3 {
+  font-size: var(--text-2xl);
+  margin-bottom: var(--space-2);
+}
+
+h4 {
+  font-size: var(--text-xl);
+  margin-bottom: var(--space-2);
+}
+
+h5 {
+  font-size: var(--text-lg);
+  margin-bottom: var(--space-2);
+}
+
+h6 {
+  font-size: var(--text-base);
+  font-weight: 600;
+  margin-bottom: var(--space-1);
+}
+
+p {
+  margin: 0 0 var(--space-2) 0;
+  line-height: 1.6;
+}
+
+a {
+  color: hsl(var(--primary));
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: hsl(var(--primary));
+  opacity: 0.8;
+}
+
+strong {
+  font-weight: 600;
+}
+
+em {
+  font-style: italic;
+}
+
+code {
+  font-family: var(--font-mono);
+  font-size: 0.875em;
+  padding: 0.125rem 0.25rem;
+  background: hsl(var(--muted));
+  border-radius: 0.25rem;
+}
+
+/* ============================================
+   Form Elements
+   ============================================ */
+
+input, textarea, select {
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+}
+
 button {
+  font-family: var(--font-primary);
   font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition-base);
 }
 
-/* Subtle shadows for depth */
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ============================================
+   Utility Classes
+   ============================================ */
+
+/* Shadow System */
 .shadow-sm {
-  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  box-shadow: var(--shadow-sm);
 }
 
 .shadow {
-  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  box-shadow: var(--shadow-md);
 }
 
 .shadow-md {
-  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  box-shadow: var(--shadow-md);
+}
+
+.shadow-lg {
+  box-shadow: var(--shadow-lg);
+}
+
+.shadow-xl {
+  box-shadow: var(--shadow-xl);
+}
+
+/* Calendar-Specific Utilities */
+.event-card {
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.event-card:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.time-slot {
+  border-bottom: 1px solid hsl(var(--border));
+  transition: background-color var(--transition-fast);
+}
+
+.time-slot:hover {
+  background-color: hsl(var(--muted));
+}
+
+/* Focus States */
+*:focus-visible {
+  outline: 2px solid hsl(var(--ring));
+  outline-offset: 2px;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--muted));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--muted-foreground) / 0.4);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--muted-foreground) / 0.6);
 }
